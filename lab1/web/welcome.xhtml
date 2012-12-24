@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+   <h:head>
+      <title>Welcome</title>
+   </h:head>
+   <h:body>
+      <h3>Welcome to Links Microblog</h3>
+      <h4>links:</h4>
+      
+          
+      
+      <h:form>
+          <td><h:outputLabel id="commit1">#{user.commit0}</h:outputLabel></td>
+          <td><h:outputLabel id="commit2">#{user.commit1}</h:outputLabel></td>
+          <td><h:outputLabel id="commit3">#{user.commit2}</h:outputLabel></td>
+          <td><h:outputLabel id="commit4">#{user.commit3}</h:outputLabel></td>
+          <td><h:outputLabel id="commit5">#{user.commit4}</h:outputLabel></td>
+          <td><h:outputLabel id="commit6">#{user.commit5}</h:outputLabel></td>
+          <td><h:outputLabel id="commit7">#{user.commit6}</h:outputLabel></td>
+          <td><h:outputLabel id="commit8">#{user.commit7}</h:outputLabel></td>
+          <td><h:outputLabel id="commit9">#{user.commit8}</h:outputLabel></td>
+          <td><h:outputLabel id="commit10">#{user.commit9}</h:outputLabel></td>
+          
+      
+       <p>
+           <td>
+               <h:inputText value ="#{user.links}" id="linkt" />
+            </td>
+            <td>
+                <h:commandButton value ="adicionar link" id="linkb">
+                    <f:ajax execute="linkt" render="commit1 commit2 commit3 commit4 commit5 commit6 commit7 commit8 commit9" />
+                </h:commandButton>
+         </td>
+       </p>
+      </h:form>
+   </h:body>
+</html>
