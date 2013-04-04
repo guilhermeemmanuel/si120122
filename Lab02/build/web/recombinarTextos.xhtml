@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>Recombinar textos</title>
+    </head>
+    <body>
+        <h:form>
+        <h:dataTable value="#{classe.textosCadastrados}" var="texto" bgcolor="FFF500">
+                    
+                <h:column >
+                    
+                    <f:facet name="header"><h3>Textos Cadastrados</h3></f:facet>
+                    <h:outputLabel value="#{texto.texto}" />
+                    <h:commandButton value="recombinar" action="#{classe.recombinar(texto)}" />
+                    
+                </h:column>
+                    
+        </h:dataTable>
+        
+        <table>
+            <tr>
+                <td><h:commandButton value="Voltar" action="index" /></td>
+                <td><h:selectOneRadio value="#{classe.estrategia}">
+                        <f:selectItems value="#{classe.estrategias}" var="it" itemLabel="#{it}" itemValue="#{it}" />
+                            
+                    </h:selectOneRadio>
+                </td>
+            </tr>
+        </table>
+            </h:form>
+    </body>
+</html>
