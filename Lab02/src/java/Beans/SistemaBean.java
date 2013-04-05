@@ -4,6 +4,7 @@
  */
 package Beans;
 
+import SistemaRecombinador.Estrategia;
 import SistemaRecombinador.EstrategiaAleatoriaComRepeticao;
 import SistemaRecombinador.EstrategiaAleatoriaSemRepeticao;
 import SistemaRecombinador.EstrategiaInvertida;
@@ -25,7 +26,7 @@ public class SistemaBean {
     private String mensagem;
     private Sistema sistema;
     private String texto;
-    private String estrategia;
+    private String estrategia = "Aleatoria sem repeticao";
     
     public SistemaBean() {
         this.sistema = Sistema.getInstance();
@@ -62,9 +63,14 @@ public class SistemaBean {
     
     
     public String recombinar(Texto texto){
-        sistema.setTextoParaRecombinar(texto);
-        sistema.setEstrategiaDeRecombinacaoAtual((estrategia.equals("Aleatoria com repeticao") ? new EstrategiaAleatoriaComRepeticao() : (estrategia.equals("Inversa") ? new EstrategiaInvertida() : new EstrategiaAleatoriaSemRepeticao())));
+        Estrategia strategy = (estrategia.equals("Aleatoria com repeticao") ? new EstrategiaAleatoriaComRepeticao() : (estrategia.equals("Inversa") ? new EstrategiaInvertida() : new EstrategiaAleatoriaSemRepeticao()));
+        strategy.setTextoPrincipal(texto);
+        sistema.setEstrategiaDeRecombinacaoAtual(strategy);
         return "recombinarTexto";
+    }
+    
+    public void aplicaRecombinacao(){
+        sistema.aplicaRecombinacao();
     }
     
     
@@ -84,6 +90,25 @@ public class SistemaBean {
         this.estrategia = estrategia;
     }
     
+   
+    public Texto getTextoRecombinado(){
+        return sistema.getTextoRecombinado();
+    }
+        
+    public boolean podeRecombinar(){
+        return sistema.podeRecombinar();
+    }
+    
+    
+    public Texto getTextoEmRecombinacao(){
+        return sistema.getTextoRecombinado();
+    }
+    
+    public String salvaRecombinacaoAtual(){
+        sistema.salvaRecombinacaoAtual();
+        this.mensagem = "recombinacao salva";
+        return "index";
+    }
     
     
     

@@ -10,6 +10,7 @@ package SistemaRecombinador;
  */
 public interface Estrategia {
     
+    public boolean podeAplicarEstrategia();
     public void setTextoPrincipal(Texto texto);
     public void aplicaEstrategia();
     public Texto getNovoTextoGerado();

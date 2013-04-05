@@ -17,7 +17,7 @@ and open the template in the editor.
                 <h:column >
                     
                     <f:facet name="header"><h3>Textos Cadastrados</h3></f:facet>
-                    <h:outputLabel value="#{texto.texto}" />
+                    <h:outputLabel value="#{texto.first12Words}" />
                     <h:commandButton value="recombinar" action="#{classe.recombinar(texto)}" />
                     
                 </h:column>

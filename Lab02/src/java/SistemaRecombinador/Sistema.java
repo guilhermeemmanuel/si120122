@@ -4,7 +4,6 @@
  */
 package SistemaRecombinador;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -16,9 +15,8 @@ public class Sistema {
     
     private static Sistema sistemaInstance;
     private Collection<Texto> textosCadastrados;
-    private Texto recombinar;
     private Estrategia estrategia;
-
+    
     private Sistema() {
         textosCadastrados = new LinkedList<Texto>();
         estrategia = new EstrategiaAleatoriaSemRepeticao();
@@ -32,23 +30,44 @@ public class Sistema {
     }
         
     
+    private void cadastraTexto(Texto texto){
+        if(texto != null){
+            textosCadastrados.add(texto);
+        }
+    }
+    
     
     public Collection<Texto> getTextosCadastrados(){
         return this.textosCadastrados;
     }
-    
-    public void setTextoParaRecombinar(Texto texto){
-        if(textosCadastrados.contains(texto)){
-            this.recombinar = texto;
-        }
-        
-    }
+   
     
     public void setEstrategiaDeRecombinacaoAtual(Estrategia estrategia){
         if(estrategia != null){
             this.estrategia = estrategia;
         }
     }
+    
+    public void recombinar(){
+        estrategia.aplicaEstrategia();
+    }
+    
+    public Texto getTextoRecombinado(){
+        return estrategia.getNovoTextoGerado();
+    }
+    
+    public boolean podeRecombinar(){
+        return estrategia.podeAplicarEstrategia();
+    }
+    
+    public void aplicaRecombinacao(){
+        estrategia.aplicaEstrategia();
+    }
+    
+    public void salvaRecombinacaoAtual(){
+       cadastraTexto(estrategia.getNovoTextoGerado()); 
+    }
+        
         
         
         
