@@ -42,7 +42,7 @@ public class Texto {
             
             linha += string;
             
-            if(posicaoAtualNaBusca == 10) {
+            if(posicaoAtualNaBusca == 9) {
                 posicaoAtualNaBusca = 0;
                 textoFinal.add(linha);
                 linha = "";
@@ -78,7 +78,25 @@ public class Texto {
     
    
     public String getFirst12Words(){
-        return (texto.size() > 0) ? texto.iterator().next() : "";
+        int i = 0;
+        String first12 = "";
+        for (String string : texto) {
+            
+            for (String string1 : string.split(" ")) {
+                if(i  == 12) {
+                    break;
+                }
+                if(i != 0){
+                    first12 += " ";
+                }
+                first12 += string1;
+                i++;
+            }
+            if(i  == 12){
+                break;
+            }
+        }
+        return first12;
     }
     
     public ListIterator<String> listIterator(){
